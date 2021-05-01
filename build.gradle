@@ -1,0 +1,40 @@
+plugins {
+    id 'org.jetbrains.intellij' version '0.4.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+}
+
+group 'com.tfc.ulht'
+version 'v0.5-Alpha Release'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile 'com.github.kittinunf.fuel:fuel:2.2.1'
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation "com.squareup.moshi:moshi:1.9.2"
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+    compile group: 'net.lingala.zip4j', name: 'zip4j', version: '2.6.1'
+
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.1'
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
